@@ -171,6 +171,90 @@ PDF Loading → Document Parsing → Node Splitting → Vector Embedding → Ind
 
 ---
 
+### Project 3. 🤖 Q&A Agent with LangChain, Granite 3, and RAG
+
+**Status:** ✅ Complete | **Tech Stack:** LangChain, IBM watsonx.ai, Granite 3.8B, RAG, ChromaDB
+
+A comprehensive question-answering agent that leverages IBM Granite 3.8B Instruct model with LangChain framework to create an intelligent document retrieval and response system using Retrieval-Augmented Generation (RAG) technology.
+
+#### Key Features
+* **Granite 3.8B Instruct Integration**: Utilizes IBM's latest instruction-tuned dense decoder model trained on 12+ trillion tokens
+* **Advanced RAG Pipeline**: Complete retrieval-augmented generation workflow with LangChain orchestration
+* **Intelligent Document Processing**: CharacterTextSplitter for optimized 1000-character chunking with zero overlap
+* **Semantic Search**: IBM Slate-30M English embedding model for precise vector similarity matching
+* **ChromaDB Vector Store**: Efficient storage and retrieval of document embeddings
+* **Conversational Memory**: Context-aware question-answering with document grounding
+* **Multi-Language Support**: 12 natural languages and 116 programming languages capability
+* **Greedy Decoding**: Deterministic response generation with configurable parameters
+
+#### Technical Architecture
+```mermaid
+graph TB
+    subgraph "Document Ingestion"
+        A[Text Documents] --> B[TextLoader]
+        B --> C[CharacterTextSplitter<br/>1000 char chunks]
+        C --> D[Document Chunks]
+    end
+    
+    subgraph "Embedding & Storage"
+        D --> E[IBM Slate-30M<br/>Embedding Model]
+        E --> F[Vector Embeddings]
+        F --> G[ChromaDB<br/>Vector Store]
+    end
+    
+    subgraph "Query Processing"
+        H[User Question] --> I[Similarity Search]
+        G --> I
+        I --> J[Retrieved Context]
+    end
+    
+    subgraph "Response Generation"
+        J --> K[Granite 3.8B<br/>Instruct Model]
+        H --> K
+        K --> L[Grounded Response]
+    end
+    
+    style A fill:#ffebee
+    style G fill:#f3e5f5
+    style K fill:#e3f2fd
+    style L fill:#e8f5e8
+```
+
+#### Implementation Highlights
+```python
+# Core RAG Pipeline Components
+Document Loading → Text Splitting → Embedding → Vector Storage → Retrieval → Generation
+
+# Key Technologies:
+├── LangChain Framework (v0.2.6)
+├── IBM watsonx.ai Integration
+├── Granite 3.8B Instruct Model
+├── WatsonxEmbeddings (Slate-30M)
+├── ChromaDB Vector Database
+├── RetrievalQA Chain
+└── Configurable Parameters
+```
+
+#### Advanced Capabilities
+* **Document Grounding**: All responses backed by source document evidence
+* **Flexible Chunking**: Configurable text splitting strategies for optimal retrieval
+* **Parameter Control**: Temperature (0.4), max tokens (100), and decoding method tuning
+* **Real-time Processing**: Dynamic question answering with contextual understanding
+* **Enterprise-Ready**: Built for business applications with trust and scalability
+* **API Integration**: seamless watsonx.ai model access through LangChain wrappers
+
+#### Technology Stack
+* **LLM Model**: IBM Granite 3.8B Instruct (ibm/granite-3-8b-instruct)
+* **Framework**: LangChain 0.2.6, LangChain-Community 0.2.6
+* **Embedding Model**: IBM Slate-30M English (WatsonxEmbeddings)
+* **Vector Database**: ChromaDB 0.5.3 with similarity search
+* **Text Processing**: CharacterTextSplitter with 1000-char chunks
+* **Platform**: IBM watsonx.ai with Skills Network integration
+* **Dependencies**: ibm-watsonx-ai 1.0.10, sentence-transformers 3.0.1
+* **Configuration**: Greedy decoding, temperature 0.4, stop sequences ["\n"]
+
+  ---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://creativecommons.org/licenses/by/4.0/) file for details.

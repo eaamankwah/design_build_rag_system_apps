@@ -13,7 +13,7 @@ This repository contains a comprehensive collection of Retrieval-Augmented Gener
 
 Retrieval-Augmented Generation (RAG) is a cutting-edge technique that enhances Large Language Models by integrating external data sources into their reasoning process. While LLMs excel at broad reasoning, their knowledge is limited to training data up to a specific cutoff date. RAG addresses this limitation by:
 
-* ***Dynamic Knowledge Integration**: Retrieving relevant information and inserting it into model prompts
+* **Dynamic Knowledge Integration**: Retrieving relevant information and inserting it into model prompts
 * **Private Data Processing**: Enabling AI to reason about proprietary or newly introduced data
 * **Contextual Accuracy**: Ensuring responses are accurate, timely, and contextually relevant
 
@@ -57,6 +57,34 @@ A sophisticated document processing system that enables secure summarization and
 * **Conversational Memory**: Context-aware dialogue capabilities
 * **Source Attribution**: Traceable responses with document references
 
+#### Technical Architecture
+```mermaid
+graph TB
+    subgraph "Document Processing"
+        A[Text Documents] --> B[TextLoader]
+        B --> C[CharacterTextSplitter<br/>1000 char chunks]
+        C --> D[Document Chunks]
+    end
+    
+    subgraph "Embedding & Storage"
+        D --> E[HuggingFace<br/>Embeddings]
+        E --> F[Vector Embeddings]
+        F --> G[ChromaDB<br/>Vector Store]
+    end
+    
+    subgraph "Query Processing"
+        H[User Query] --> I[Similarity Search]
+        G --> I
+        I --> J[Retrieved Context]
+    end
+    
+    subgraph "Response Generation"
+        J --> K[IBM watsonx.ai<br/>LLM Models]
+        H --> K
+        K --> L[Conversational<br/>Response]
+    end
+```
+
 #### Technical Implementation
 ```python
 # Core architecture components
@@ -68,37 +96,7 @@ A sophisticated document processing system that enables secure summarization and
 ```
 
 ### 2. 🔍 Granite 3 Retrieval Agent
-**Status:** 🚧 In Development | **Tech Stack:** LlamaIndex, Granite 3.0
-
-Advanced retrieval system supporting multiple data formats (PDFs, HTML, text files) with precision-focused insights.
-
-### 3. 🌐 Web Data RAG System
-**Status:** 📋 Planned | **Tech Stack:** LangChain, Llama 3.1
-
-Real-time web data processing and analysis system for dynamic, context-aware interactions.
-
-### 4. 📺 YouTube Content Processor
-**Status:** 📋 Planned | **Tech Stack:** FAISS, RAG, NLP
-
-Automated video transcript extraction, summarization, and interactive Q&A system development.
-
-### 5. 🤝 AI Icebreaker Bot
-**Status:** 📋 Planned | **Tech Stack:** Granite 3.0, LlamaIndex, ProxyCurl API
-
-LinkedIn profile analysis and personalized conversation starter generation for professional networking.
-
-## 🛠️ Technical Stack
-
-### Core Technologies
-* **Language Models**: IBM watsonx.ai (Granite, Llama, FLAN-T5)
-* **Frameworks**: LangChain, LlamaIndex
-* **Vector Databases**: ChromaDB, FAISS
-* **Embeddings**: HuggingFace Transformers, Sentence-BERT
-* **APIs**: ProxyCurl (LinkedIn), IBM watsonx.ai
-
----
-
-### Project 2. Granite 3 Retrieval Agent with LlamaIndex
+**Status:** ✅ Complete | **Tech Stack:** LlamaIndex, Granite 3.0
 
 An advanced RAG application using LlamaIndex framework with IBM Granite 3.0 model for precise document retrieval and expert-level query responses on scientific and technical documents.
 
@@ -106,7 +104,7 @@ An advanced RAG application using LlamaIndex framework with IBM Granite 3.0 mode
 * **LlamaIndex Framework**: Complete RAG pipeline implementation using modern indexing techniques
 * **Granite 3.8B Instruct Model**: IBM's latest instruction-tuned dense decoder model trained on 12 trillion tokens
 * **Advanced Document Processing**: PDF processing with intelligent chunking (500-character nodes)
-* **Vector Embeddings**: IBM Slate-125M English retriever for semantic understanding  
+* **Vector Embeddings**: IBM Slate-125M English retriever for semantic understanding
 * **Precision Retrieval**: Configurable similarity search with top-k results
 * **Scientific Focus**: Optimized for research papers and technical documentation
 * **Interactive Query Engine**: Real-time question-answering with contextual responses
@@ -139,11 +137,6 @@ graph TB
         I --> L
         L --> M[Contextual Response]
     end
-    
-    style A fill:#ffebee
-    style G fill:#f3e5f5
-    style L fill:#e3f2fd
-    style M fill:#e8f5e8
 ```
 
 ```python
@@ -169,10 +162,7 @@ PDF Loading → Document Parsing → Node Splitting → Vector Embedding → Ind
 * **API Integration**: llama-index-llms-ibm, llama-index-embeddings-ibm
 * **Configuration**: Temperature 0.1, max_new_tokens 75, top-k retrieval
 
----
-
-### Project 3. 🤖 Q&A Agent with LangChain, Granite 3, and RAG
-
+### 3. 🤖 Q&A Agent with LangChain, Granite 3, and RAG
 **Status:** ✅ Complete | **Tech Stack:** LangChain, IBM watsonx.ai, Granite 3.8B, RAG, ChromaDB
 
 A comprehensive question-answering agent that leverages IBM Granite 3.8B Instruct model with LangChain framework to create an intelligent document retrieval and response system using Retrieval-Augmented Generation (RAG) technology.
@@ -213,11 +203,6 @@ graph TB
         H --> K
         K --> L[Grounded Response]
     end
-    
-    style A fill:#ffebee
-    style G fill:#f3e5f5
-    style K fill:#e3f2fd
-    style L fill:#e8f5e8
 ```
 
 #### Implementation Highlights
@@ -252,8 +237,6 @@ Document Loading → Text Splitting → Embedding → Vector Storage → Retriev
 * **Platform**: IBM watsonx.ai with Skills Network integration
 * **Dependencies**: ibm-watsonx-ai 1.0.10, sentence-transformers 3.0.1
 * **Configuration**: Greedy decoding, temperature 0.4, stop sequences ["\n"]
-
----
 
 ### 4. 📺 YouTube Summarization & Q&A with LangChain and RAG
 **Status:** ✅ Complete | **Tech Stack:** LangChain, IBM Granite, RAG, FAISS
@@ -301,11 +284,6 @@ graph TB
         N --> O[IBM Granite Model<br/>Summarization & Q&A]
         O --> P[Interactive Response<br/>with Jump Links]
     end
-    
-    style A fill:#ffebee
-    style I fill:#f3e5f5
-    style O fill:#e3f2fd
-    style P fill:#e8f5e8
 ```
 
 #### Technical Implementation
@@ -346,8 +324,6 @@ Transcript Extraction → Text Processing → Vector Embedding → FAISS Indexin
 * **Platform**: IBM Skills Network Labs integration
 * **Languages**: Python with NLP libraries
 * **Interface**: Interactive Q&A system with timestamp navigation
-
----
 
 ### 5. 🌐 Web Data RAG System with Llama 3.1-405B
 **Status:** ✅ Complete | **Tech Stack:** LangChain, Meta Llama 3.1-405B, IBM watsonx.ai, ChromaDB
@@ -421,11 +397,6 @@ graph TB
         O --> P[Llama 3.1-405B<br/>Instruct Model]
         P --> Q[Multi-Step Response]
     end
-    
-    style A fill:#ffebee
-    style J fill:#f3e5f5
-    style P fill:#e3f2fd
-    style Q fill:#e8f5e8
 ```
 
 #### Use Cases
@@ -454,9 +425,7 @@ graph TB
 * **Dependencies**: ibm-watsonx-ai 1.0.10, langchain-ibm 0.1.11, unstructured 0.15.0
 * **Configuration**: Greedy decoding, min/max tokens (10/512), comprehensive logging
 
----
-
-### 5. 🤖 AI Icebreaker Bot with IBM Granite 3.0 & LlamaIndex
+### 6. 🤖 AI Icebreaker Bot with IBM Granite 3.0 & LlamaIndex
 **Status:** ✅ Complete | **Tech Stack:** LlamaIndex, IBM Granite 3.0, ProxyCurl API, RAG
 
 An AI-powered networking tool that transforms LinkedIn profile data into personalized conversation starters for professional networking events. This sophisticated system leverages IBM Granite 3.0's advanced language capabilities with LlamaIndex's RAG framework to generate meaningful, tailored icebreakers based on someone's career highlights, education, and professional interests.
@@ -499,11 +468,6 @@ graph TB
         M --> N[Granite 3.8B<br/>Instruct Model]
         N --> O[Personalized<br/>Icebreakers]
     end
-    
-    style A fill:#ffebee
-    style J fill:#f3e5f5
-    style N fill:#e3f2fd
-    style O fill:#e8f5e8
 ```
 
 #### Advanced Capabilities
@@ -547,6 +511,15 @@ LinkedIn Data Extraction → JSON Processing → Document Splitting → Vector E
 * **Platform**: IBM watsonx.ai with Skills Network integration
 * **Configuration**: Temperature 0.0, greedy/sample decoding, top-k retrieval
 * **Interface**: Command-line chatbot with natural language interaction
+
+## 🛠️ Technical Stack
+
+### Core Technologies
+* **Language Models**: IBM watsonx.ai (Granite, Llama, FLAN-T5)
+* **Frameworks**: LangChain, LlamaIndex
+* **Vector Databases**: ChromaDB, FAISS
+* **Embeddings**: HuggingFace Transformers, Sentence-BERT
+* **APIs**: ProxyCurl (LinkedIn), IBM watsonx.ai
 
 ## 📄 License
 

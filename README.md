@@ -253,9 +253,9 @@ Document Loading → Text Splitting → Embedding → Vector Storage → Retriev
 * **Dependencies**: ibm-watsonx-ai 1.0.10, sentence-transformers 3.0.1
 * **Configuration**: Greedy decoding, temperature 0.4, stop sequences ["\n"]
 
-  ---
+---
 
-  ### 4. 📺 YouTube Summarization & Q&A with LangChain and RAG
+### 4. 📺 YouTube Summarization & Q&A with LangChain and RAG
 **Status:** ✅ Complete | **Tech Stack:** LangChain, IBM Granite, RAG, FAISS
 
 An AI-driven YouTube content processing system that transforms video consumption by automatically extracting transcripts, generating concise summaries, and enabling interactive Q&A capabilities without requiring users to watch full-length videos.
@@ -267,6 +267,46 @@ An AI-driven YouTube content processing system that transforms video consumption
 * **FAISS Integration**: Efficient indexing and retrieval of relevant video segments for enhanced search capabilities
 * **Time-Saving Navigation**: Direct jump-to-section functionality based on query relevance
 * **Content Strategy Enhancement**: Automated video processing for improved user engagement and productivity
+
+#### Technical Architecture
+```mermaid
+graph TB
+    subgraph "Video Processing"
+        A[YouTube Video URL] --> B[Transcript API]
+        B --> C[Raw Transcript Text]
+        C --> D[Text Cleaning & Processing]
+        D --> E[Timestamp Segmentation]
+    end
+    
+    subgraph "Document Processing"
+        E --> F[Text Chunking<br/>Segment-based splitting]
+        F --> G[Document Chunks<br/>with Timestamps]
+    end
+    
+    subgraph "Embedding & Storage"
+        G --> H[Vector Embedding<br/>Generation]
+        H --> I[FAISS Vector Store<br/>Segment Indexing]
+    end
+    
+    subgraph "Query Processing"
+        J[User Question] --> K[Similarity Search<br/>FAISS Retrieval]
+        I --> K
+        K --> L[Relevant Segments<br/>with Timestamps]
+    end
+    
+    subgraph "Response Generation"
+        L --> M[Context Formatting]
+        J --> N[Prompt Template]
+        M --> N
+        N --> O[IBM Granite Model<br/>Summarization & Q&A]
+        O --> P[Interactive Response<br/>with Jump Links]
+    end
+    
+    style A fill:#ffebee
+    style I fill:#f3e5f5
+    style O fill:#e3f2fd
+    style P fill:#e8f5e8
+```
 
 #### Technical Implementation
 ```python

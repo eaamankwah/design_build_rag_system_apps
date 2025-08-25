@@ -255,6 +255,60 @@ Document Loading → Text Splitting → Embedding → Vector Storage → Retriev
 
   ---
 
+  ### 4. 📺 YouTube Summarization & Q&A with LangChain and RAG
+**Status:** ✅ Complete | **Tech Stack:** LangChain, IBM Granite, RAG, FAISS
+
+An AI-driven YouTube content processing system that transforms video consumption by automatically extracting transcripts, generating concise summaries, and enabling interactive Q&A capabilities without requiring users to watch full-length videos.
+
+#### Key Features
+* **Instant Transcript Extraction**: Automated retrieval of YouTube video transcripts using pre-built APIs
+* **AI-Powered Summarization**: IBM Granite's advanced NLP for creating concise, informative video summaries
+* **Interactive Q&A System**: Real-time question-answering about video content with section-specific responses
+* **FAISS Integration**: Efficient indexing and retrieval of relevant video segments for enhanced search capabilities
+* **Time-Saving Navigation**: Direct jump-to-section functionality based on query relevance
+* **Content Strategy Enhancement**: Automated video processing for improved user engagement and productivity
+
+#### Technical Implementation
+```python
+# YouTube RAG Pipeline Architecture
+Transcript Extraction → Text Processing → Vector Embedding → FAISS Indexing → Q&A Generation
+
+# Core Components:
+├── YouTube Transcript API (Video content extraction)
+├── LangChain Framework (RAG orchestration)
+├── IBM Granite Models (Summarization & Q&A)
+├── FAISS Vector Store (Segment retrieval)
+├── Interactive Query Engine (Real-time responses)
+└── Section Navigation (Timestamp-based jumping)
+```
+
+#### Advanced Capabilities
+* **Video Content Analysis**: Automated extraction of key takeaways and insights
+* **Segment-Based Retrieval**: FAISS-powered similarity search for precise content location
+* **Educational Enhancement**: Interactive learning opportunities for video-based content
+* **Marketing Optimization**: Automated video content curation for business applications
+* **Multi-Format Support**: Handles various YouTube video types and lengths
+* **Real-Time Processing**: One-hour implementation for complete working system
+
+#### Use Cases
+* **Educators**: Transform video lectures into interactive learning materials
+* **Content Creators**: Analyze competitor content and optimize engagement strategies  
+* **Tech Enthusiasts**: Quick video analysis and key information extraction
+* **Data Scientists**: Video-based NLP and AI application development
+* **Marketing Teams**: Automated video content processing and insights generation
+
+#### Technology Stack
+* **LLM Model**: IBM Granite (Advanced language comprehension)
+* **Framework**: LangChain with RAG implementation
+* **Vector Database**: FAISS (Facebook AI Similarity Search)
+* **Video Processing**: YouTube Transcript API integration
+* **Text Processing**: Automated chunking and embedding generation
+* **Platform**: IBM Skills Network Labs integration
+* **Languages**: Python with NLP libraries
+* **Interface**: Interactive Q&A system with timestamp navigation
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://creativecommons.org/licenses/by/4.0/) file for details.

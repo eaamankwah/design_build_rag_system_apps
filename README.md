@@ -309,6 +309,113 @@ Transcript Extraction → Text Processing → Vector Embedding → FAISS Indexin
 
 ---
 
+### 5. 🌐 Web Data RAG System with Llama 3.1-405B
+**Status:** ✅ Complete | **Tech Stack:** LangChain, Meta Llama 3.1-405B, IBM watsonx.ai, ChromaDB
+
+An advanced Retrieval-Augmented Generation system that processes real-time web data to provide context-aware, accurate responses using Meta's most powerful open-source language model. This system demonstrates enterprise-grade RAG implementation for dynamic web content analysis and intelligent information extraction.
+
+#### Key Features
+* **Llama 3.1-405B Integration**: Utilizes Meta's flagship 405-billion parameter open-source model for superior reasoning and comprehension
+* **Dynamic Web Content Processing**: Real-time extraction and indexing of web pages for up-to-date knowledge retrieval
+* **Advanced Document Processing**: RecursiveCharacterTextSplitter with 512-character chunking for optimal context segmentation
+* **IBM Slate Embeddings**: High-performance vector embeddings using IBM's Slate-30M English model for semantic understanding
+* **ChromaDB Vector Store**: Efficient storage and similarity search with Euclidean distance scoring
+* **Context-Aware Responses**: Multi-step explanations with source attribution and relevance scoring
+* **Enterprise Architecture**: Scalable design suitable for business applications and knowledge management systems
+
+#### Technical Implementation
+```python
+# Web RAG Pipeline Architecture
+Web Data Extraction → Document Cleaning → Text Splitting → Vector Embedding → ChromaDB Storage → Retrieval → Generation
+
+# Core Components:
+├── Web Content Loader (HTTP requests for data extraction)
+├── RecursiveCharacterTextSplitter (512-char chunks)
+├── WatsonxEmbeddings (IBM Slate-30M English)
+├── ChromaDB Vector Database (Similarity search)
+├── Retrieval Chain (Context-aware document retrieval)
+├── Llama 3.1-405B Instruct (Response generation)
+└── Multi-step Response Format (Structured explanations)
+```
+
+#### Advanced Capabilities
+* **Real-Time Web Processing**: Dynamic content extraction from multiple IBM product documentation sources
+* **Intelligent Document Chunking**: Recursive text splitting with configurable overlap for optimal retrieval
+* **Semantic Vector Search**: Advanced similarity matching with configurable top-k results and distance scoring
+* **Multi-Step Reasoning**: Structured response generation with detailed explanations and context grounding
+* **Metadata Management**: Comprehensive document tracking with source attribution and ID management
+* **Template-Based Prompting**: Customizable prompt templates for consistent response formatting
+* **Chain Orchestration**: LangChain LCEL (LangChain Expression Language) for pipeline management
+
+#### Technical Architecture
+```mermaid
+graph TB
+    subgraph "Web Data Ingestion"
+        A[Web URLs] --> B[HTTP Requests]
+        B --> C[Content Extraction]
+        C --> D[Document Cleaning]
+        D --> E[Metadata Addition]
+    end
+    
+    subgraph "Document Processing"
+        E --> F[RecursiveCharacterTextSplitter<br/>512 char chunks]
+        F --> G[Document Chunks]
+    end
+    
+    subgraph "Embedding & Storage"
+        G --> H[IBM Slate-30M<br/>Embedding Model]
+        H --> I[Vector Embeddings]
+        I --> J[ChromaDB<br/>Vector Store]
+    end
+    
+    subgraph "Query Processing"
+        K[User Query] --> L[Similarity Search<br/>Top-K Results]
+        J --> L
+        L --> M[Retrieved Context]
+    end
+    
+    subgraph "Response Generation"
+        M --> N[Context Formatting]
+        K --> O[Prompt Template]
+        N --> O
+        O --> P[Llama 3.1-405B<br/>Instruct Model]
+        P --> Q[Multi-Step Response]
+    end
+    
+    style A fill:#ffebee
+    style J fill:#f3e5f5
+    style P fill:#e3f2fd
+    style Q fill:#e8f5e8
+```
+
+#### Use Cases
+* **Enterprise Knowledge Management**: Real-time processing of corporate documentation and web resources
+* **Research Assistance**: Academic and technical research with live web data integration
+* **Customer Support**: Dynamic FAQ systems with real-time information updates
+* **Content Analysis**: Automated web content summarization and insight extraction
+* **Competitive Intelligence**: Real-time analysis of competitor web content and documentation
+* **Educational Applications**: Interactive learning systems with current web-based information
+
+#### Performance Features
+* **Greedy Decoding**: Deterministic response generation for consistent results
+* **Configurable Parameters**: Fine-tuned token limits (10-512), repetition penalty control
+* **Distance Scoring**: Euclidean distance-based relevance ranking for optimal context selection
+* **Scalable Architecture**: Designed for high-throughput enterprise applications
+* **Memory Efficient**: Optimized chunking and embedding strategies for large-scale deployment
+
+#### Technology Stack
+* **LLM Model**: Meta Llama 3.1-405B Instruct (meta-llama/llama-3-405b-instruct)
+* **Framework**: LangChain 0.2.6 with LCEL pipeline orchestration
+* **Embedding Model**: IBM Slate-30M English (WatsonxEmbeddings)
+* **Vector Database**: ChromaDB with similarity search and metadata filtering
+* **Text Processing**: RecursiveCharacterTextSplitter with 512-character chunks
+* **Platform**: IBM watsonx.ai with Skills Network integration
+* **Web Processing**: Python requests library for dynamic content extraction
+* **Dependencies**: ibm-watsonx-ai 1.0.10, langchain-ibm 0.1.11, unstructured 0.15.0
+* **Configuration**: Greedy decoding, min/max tokens (10/512), comprehensive logging
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://creativecommons.org/licenses/by/4.0/) file for details.
@@ -318,4 +425,3 @@ This project is licensed under the MIT License - see the [LICENSE](https://creat
 * [IBM watsonx.ai Documentation](https://docs.anthropic.com)
 * [LangChain Documentation](https://langchain.com/docs)
 * [RAG Best Practices Guide](https://example.com/rag-guide)
-

@@ -456,6 +456,98 @@ graph TB
 
 ---
 
+### 5. 🤖 AI Icebreaker Bot with IBM Granite 3.0 & LlamaIndex
+**Status:** ✅ Complete | **Tech Stack:** LlamaIndex, IBM Granite 3.0, ProxyCurl API, RAG
+
+An AI-powered networking tool that transforms LinkedIn profile data into personalized conversation starters for professional networking events. This sophisticated system leverages IBM Granite 3.0's advanced language capabilities with LlamaIndex's RAG framework to generate meaningful, tailored icebreakers based on someone's career highlights, education, and professional interests.
+
+#### Key Features
+* **LinkedIn Profile Intelligence**: ProxyCurl API integration for comprehensive LinkedIn data extraction
+* **IBM Granite 3.8B Instruct**: Advanced 8-billion parameter model with multilingual capabilities (12 languages, 116 programming languages)
+* **RAG-Powered Analysis**: LlamaIndex framework with complete indexing and retrieval pipeline
+* **Intelligent Data Processing**: SentenceSplitter with 500-character chunking for optimal context segmentation
+* **Vector Embeddings**: IBM Slate-125M English retriever for semantic understanding and similarity search
+* **Interactive Chatbot Interface**: Real-time Q&A system with context-aware responses
+* **Personalized Icebreakers**: Dynamic conversation starter generation based on career highlights and achievements
+* **Professional Networking Enhancement**: Transforms generic introductions into memorable, meaningful connections
+
+#### Technical Architecture
+```mermaid
+graph TB
+    subgraph "Data Extraction"
+        A[LinkedIn Profile URL] --> B[ProxyCurl API]
+        B --> C[Profile Data JSON]
+        C --> D[Data Cleaning]
+    end
+    
+    subgraph "Document Processing"
+        D --> E[JSON to Document]
+        E --> F[SentenceSplitter<br/>500-char chunks]
+        F --> G[Document Nodes]
+    end
+    
+    subgraph "Embedding & Storage"
+        G --> H[IBM Slate-125M<br/>Embedding Model]
+        H --> I[Vector Embeddings]
+        I --> J[VectorStoreIndex]
+    end
+    
+    subgraph "Query & Generation"
+        K[User Query] --> L[Similarity Search]
+        J --> L
+        L --> M[Retrieved Context]
+        M --> N[Granite 3.8B<br/>Instruct Model]
+        N --> O[Personalized<br/>Icebreakers]
+    end
+    
+    style A fill:#ffebee
+    style J fill:#f3e5f5
+    style N fill:#e3f2fd
+    style O fill:#e8f5e8
+```
+
+#### Advanced Capabilities
+* **Prompt Engineering**: Dual-template system for fact generation and query responses
+* **Context-Aware Retrieval**: Top-k similarity search with configurable parameters
+* **Professional Fact Extraction**: Automated identification of career highlights and educational achievements
+* **Interactive Chat Interface**: Command-line chatbot with natural language processing
+* **Error Handling**: Comprehensive exception management and graceful fallbacks
+* **Mock Data Support**: Development-friendly testing with pre-generated LinkedIn profiles
+
+#### Use Cases
+* **Networking Events**: Generate personalized conversation starters for conferences and meetups
+* **Job Interviews**: Research candidates and create meaningful discussion points
+* **Sales Prospecting**: Personalize outreach with relevant professional insights
+* **Business Development**: Enhance client relationship building with tailored approaches
+* **Career Coaching**: Analyze professional profiles for coaching insights
+* **Recruitment**: Screen candidates with intelligent profile analysis
+
+#### Implementation Highlights
+```python
+# Complete RAG Pipeline Architecture
+LinkedIn Data Extraction → JSON Processing → Document Splitting → Vector Embedding → Index Creation → Query Processing → Response Generation
+
+# Core Components:
+├── ProxyCurl API (LinkedIn data extraction)
+├── LlamaIndex Framework (RAG orchestration)
+├── IBM Granite 3.8B Instruct (Response generation)
+├── IBM Slate-125M Embeddings (Semantic understanding)
+├── VectorStoreIndex (Efficient storage/retrieval)
+├── SentenceSplitter (Optimal chunking strategy)
+└── Interactive Chat Interface (User interaction)
+```
+
+#### Technology Stack
+* **LLM Model**: IBM Granite 3.8B Instruct (ibm/granite-3-8b-instruct)
+* **Framework**: LlamaIndex 0.11.8 with RAG pipeline orchestration
+* **Embedding Model**: IBM Slate-125M English Retriever
+* **Data Source**: ProxyCurl API for LinkedIn profile extraction
+* **Vector Storage**: VectorStoreIndex with similarity-based retrieval
+* **Text Processing**: SentenceSplitter with 500-character chunks
+* **Platform**: IBM watsonx.ai with Skills Network integration
+* **Configuration**: Temperature 0.0, greedy/sample decoding, top-k retrieval
+* **Interface**: Command-line chatbot with natural language interaction
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](https://creativecommons.org/licenses/by/4.0/) file for details.
